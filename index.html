@@ -114,6 +114,10 @@
         getInitialState: function(){
           return { value: '' }
         },
+        handleMouseClick: function(event){
+          var clicked = this.state.value + event.target.innerText;
+          this.setState({ value: clicked })
+        },
         render: function(){
           return <div>
             <div id="screen-container">
@@ -138,25 +142,43 @@
                   className="operator"
                 >x</span>
 
-                <span>7</span>
-                <span>8</span>
-                <span>9</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >7</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >8</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >9</span>
 
                 <span 
                   className="operator"
                 >-</span>
 
-                <span>4</span>
-                <span>5</span>
-                <span>6</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >4</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >5</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >6</span>
 
                 <span 
                   className="operator"
                 >+</span>
 
-                <span>1</span>
-                <span>2</span>
-                <span>3</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >1</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >2</span>
+                <span
+                  onClick={this.handleMouseClick}
+                >3</span>
 
                 <span 
                   className="operator" 
@@ -164,7 +186,10 @@
                 >=</span>
 
                 <div className="l-row">
-                  <span id="zero">0</span>
+                  <span 
+                    id="zero"
+                    onClick={this.handleMouseClick}
+                  >0</span>
                 </div>
 
               </div>
