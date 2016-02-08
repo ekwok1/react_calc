@@ -120,7 +120,7 @@
         },
         handleOperator: function(event){
           var current = this.state.value;
-          if (!current.match(/\D/)) {
+          if (!current.match(/[x+\/-]/)) {
             var operator = this.state.value + event.target.innerText;
             this.setState({ value: operator });
           }
@@ -130,7 +130,7 @@
         },
         handleEqual: function(){
           var expression = this.state.value;
-          var operator = expression.match(/\D/)[0];
+          var operator = expression.match(/[x+\/-]/)[0];
           if (!operator) {
             this.setState({ value: "ERROR" })
           } else {
