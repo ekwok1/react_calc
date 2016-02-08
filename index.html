@@ -118,6 +118,9 @@
           var clicked = this.state.value + event.target.innerText;
           this.setState({ value: clicked })
         },
+        handleClear: function(){
+          this.setState({ value: '' })
+        },
         render: function(){
           return <div>
             <div id="screen-container">
@@ -130,9 +133,10 @@
             <div id="button-container">
               <div className="buttons">
 
-                <span 
+                <span
                   className="operator"
                   id="cancel"
+                  onClick={this.handleClear}
                 >C</span>
 
                 <span 
