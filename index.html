@@ -119,8 +119,11 @@
           this.setState({ value: clicked });
         },
         handleOperator: function(event){
-          var operator = this.state.value + event.target.innerText;
-          this.setState({ value: operator });
+          var current = this.state.value;
+          if (!current.match(/\D/)) {
+            var operator = this.state.value + event.target.innerText;
+            this.setState({ value: operator });
+          }
         },
         handleClear: function(){
           this.setState({ value: '' })
