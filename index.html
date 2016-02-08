@@ -128,6 +128,21 @@
         handleClear: function(){
           this.setState({ value: '' })
         },
+        handleEqual: function(){
+          var expression = this.state.value;
+          var operator = expression.match(/\D/)[0];
+          if (!operator) {
+            this.setState({ value: "ERROR" })
+          } else {
+            var numbers = expression.split(operator);
+            var x = Number(numbers[0]);
+            var y = Number(numbers[1]);
+            if (operator === "+") {
+
+              this.setState({ value: String(x + y) })
+            }
+          }
+        },
         render: function(){
           return <div>
             <div id="screen-container">
@@ -198,6 +213,7 @@
                 <span 
                   className="operator" 
                   id="calc"
+                  onClick={this.handleEqual}
                 >=</span>
 
                 <div className="l-row">
