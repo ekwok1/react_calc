@@ -114,9 +114,13 @@
         getInitialState: function(){
           return { value: '' }
         },
-        handleMouseClick: function(event){
+        handleNumber: function(event){
           var clicked = this.state.value + event.target.innerText;
-          this.setState({ value: clicked })
+          this.setState({ value: clicked });
+        },
+        handleOperator: function(event){
+          var operator = this.state.value + event.target.innerText;
+          this.setState({ value: operator });
         },
         handleClear: function(){
           this.setState({ value: '' })
@@ -141,47 +145,51 @@
 
                 <span 
                   className="operator"
+                  onClick={this.handleOperator}
                 >/</span>
                 <span 
                   className="operator"
+                  onClick={this.handleOperator}
                 >x</span>
 
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >7</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >8</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >9</span>
 
                 <span 
                   className="operator"
+                  onClick={this.handleOperator}
                 >-</span>
 
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >4</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >5</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >6</span>
 
                 <span 
                   className="operator"
+                  onClick={this.handleOperator}
                 >+</span>
 
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >1</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >2</span>
                 <span
-                  onClick={this.handleMouseClick}
+                  onClick={this.handleNumber}
                 >3</span>
 
                 <span 
@@ -192,7 +200,7 @@
                 <div className="l-row">
                   <span 
                     id="zero"
-                    onClick={this.handleMouseClick}
+                    onClick={this.handleNumber}
                   >0</span>
                 </div>
 
