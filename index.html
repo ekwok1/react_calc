@@ -137,9 +137,14 @@
             var numbers = expression.split(operator);
             var x = Number(numbers[0]);
             var y = Number(numbers[1]);
-            if (operator === "+") {
-
-              this.setState({ value: String(x + y) })
+            if (operator === "+"){
+              this.setState({ value: String(x + y) });
+            } else if (operator === "-"){
+              this.setState({ value: String(x - y) });
+            } else if (operator === "*"){
+              this.setState({ value: String(x * y) });
+            } else {
+              this.setState({ value: String(x / y) });
             }
           }
         },
