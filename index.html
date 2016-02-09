@@ -127,12 +127,19 @@
         },
         handleKeyboard: function(event){
           var access = [43, 45, 46, 47, 120, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57]
+          var operator = [43, 45, 46, 47, 120]
           console.log(event.which);
           if (event.which === 13){
             this.handleEqual();
+          } else if (operator.indexOf(event.which) >= 0){
+            var current = this.state.value;
+            if (!current.match(/[x+\/-]/)) {
+              var operator = this.state.value + String.fromCharCode(event.which);
+              this.setState({ value: operator });
+            }
           } else {
             if (access.indexOf(event.which) >= 0) {
-              var typed = this.state.value + String.fromCharCode(event.which);;
+              var typed = this.state.value + String.fromCharCode(event.which);
               this.setState({ value: typed })
             }
           }
