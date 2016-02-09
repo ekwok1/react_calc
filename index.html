@@ -126,9 +126,12 @@
           this.setState({ value: '' })
         },
         handleKeyboard: function(event){
-          console.log(event.which);
-          var typed = this.state.value + String.fromCharCode(event.which);;
-          this.setState({ value: typed })
+          if (event.which === 13){
+            this.handleEqual();
+          } else {
+            var typed = this.state.value + String.fromCharCode(event.which);;
+            this.setState({ value: typed })
+          }
         },
         handleNumber: function(event){
           var clicked = this.state.value + event.target.innerText;
