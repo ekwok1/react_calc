@@ -114,6 +114,22 @@
         getInitialState: function(){
           return { value: '' }
         },
+        handleBack: function(event){
+          if (event.which === 8){
+            var newState = String(this.state.value).split('');
+            newState.pop();
+            newState = newState.join('');
+            this.setState({ value: newState });
+          }
+        },
+        handleClear: function(){
+          this.setState({ value: '' })
+        },
+        handleKeyboard: function(event){
+          console.log(event.which);
+          var typed = this.state.value + String.fromCharCode(event.which);;
+          this.setState({ value: typed })
+        },
         handleNumber: function(event){
           var clicked = this.state.value + event.target.innerText;
           this.setState({ value: clicked });
@@ -125,23 +141,20 @@
             this.setState({ value: operator });
           }
         },
-        handleClear: function(){
-          this.setState({ value: '' })
-        },
         handleEqual: function(){
           var expression = this.state.value;
-          var operator = expression.match(/[x+\/-]/)[0];
-          if (!operator) {
+          var operator = expression.match(/[x+\/-]/);
+          if (operator === null) {
             this.setState({ value: "ERROR" })
           } else {
             var numbers = expression.split(operator);
             var x = Number(numbers[0]);
             var y = Number(numbers[1]);
-            if (operator === "+"){
+            if (operator[0] === "+"){
               this.setState({ value: String(x + y) });
-            } else if (operator === "-"){
+            } else if (operator[0] === "-"){
               this.setState({ value: String(x - y) });
-            } else if (operator === "x"){
+            } else if (operator[0] === "x"){
               this.setState({ value: String(x * y) });
             } else {
               this.setState({ value: String(x / y) });
@@ -153,6 +166,8 @@
             <div id="screen-container">
               <input
                 id="screen"
+                onKeyPress={this.handleKeyboard}
+                onKeyDown={this.handleBack}
                 value={this.state.value}
               ></input>
             </div>
